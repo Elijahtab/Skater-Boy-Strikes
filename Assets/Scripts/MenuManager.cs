@@ -15,4 +15,12 @@ public class MenuManager : MonoBehaviour
         Debug.Log("Quit");
         //quit the application
     }
+    public void Restart()
+    {
+        //Add code here to restart the game
+        
+        SceneManager.LoadScene(0);
+        
+      
+    }
 }

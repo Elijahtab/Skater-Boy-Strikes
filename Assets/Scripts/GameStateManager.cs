@@ -6,7 +6,7 @@ using System;
 
 public class GameStateManager : MonoBehaviour
 {
-    public static Action OnGameOver;  
+      
     public static float EnemyMoveSpeed { get; private set; } //A read only global property that makes it easy for us to change the move speed of the pillars.
 
     [SerializeField]
@@ -16,7 +16,7 @@ public class GameStateManager : MonoBehaviour
 
 
     private static GameStateManager _instance; //Setting the GameStateManege to a singleton
-
+    
 
 
 
@@ -48,10 +48,7 @@ public class GameStateManager : MonoBehaviour
     //These two methods help up to handle the Game being over and restarting. 
     public static void GameOver()
     {
-
-        //Calls the On Game Over fucntion from Unity
-        OnGameOver();
-
+        SceneManager.LoadScene(2);
 
     }
 
