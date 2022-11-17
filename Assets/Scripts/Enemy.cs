@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        player = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -31,5 +32,14 @@ public class Enemy : MonoBehaviour
     void moveCharacter(Vector2 direction)
     {
         rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
+
+
     }
 }

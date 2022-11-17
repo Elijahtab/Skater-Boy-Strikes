@@ -15,10 +15,12 @@ public class PlayerController : MonoBehaviour
     private float rightForce; //This is the force that we will want to apply to the rigidbody
     [SerializeField]
     private Text scoreDisplay; //This is a Unity UI Text Object that you can display the score in by setting the text field of this object.
-
+    [SerializeField]
+    private Text healthDisplay;
     private int score; //An internal field to store the score in.
     public GameObject GameOver;
     
+    private int health;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,8 @@ public class PlayerController : MonoBehaviour
         //Here is where you should initalize fields.
         score = 0;
         scoreDisplay.text = $"{score}";
-
+        health = 10;
+        healthDisplay.text = health.ToString();
 
     }
 
@@ -47,6 +50,7 @@ public class PlayerController : MonoBehaviour
         {
             GetComponent<Rigidbody2D>().AddForce(Vector2.right * rightForce);
         }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -87,6 +91,12 @@ public class PlayerController : MonoBehaviour
         {
             score += 100;
             scoreDisplay.text = $"{score}";
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            health -= 1;
+            healthDisplay.text = health.ToString();
         }
 
     }
