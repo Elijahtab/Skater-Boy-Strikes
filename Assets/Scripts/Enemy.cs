@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject frozenVersion;
+
     public Transform player;
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
@@ -33,6 +36,15 @@ public class Enemy : MonoBehaviour
     {
         rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
     }
+
+    public void freeze()
+    {
+        GameObject frozenEnemy = Instantiate(frozenVersion, transform);
+        WorldMover.addMovable(frozenEnemy);
+        transform.DetachChildren();
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")

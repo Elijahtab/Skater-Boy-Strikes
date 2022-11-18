@@ -1299,7 +1299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4511860b0a5df2044b23935eae04232a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wMov: {fileID: 1843961326}
   levelConfigs:
   - {fileID: 6161828888602490073, guid: 305f1451e68052a438cc33a3ff04766f, type: 3}
   - {fileID: 8871233744959478545, guid: f85f777fd581a554eb10f3678a8529c3, type: 3}
@@ -1897,6 +1896,10 @@ PrefabInstance:
     - target: {fileID: 2431897934266213218, guid: 26ffb9f25873ff64787cccc4a08cdb8e, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431897934266213218, guid: 26ffb9f25873ff64787cccc4a08cdb8e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2431897934266213218, guid: 26ffb9f25873ff64787cccc4a08cdb8e, type: 3}
       propertyPath: m_TagString

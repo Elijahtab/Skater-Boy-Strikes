@@ -7,7 +7,7 @@ public class WorldMover : MonoBehaviour
 {
     public float moveSpeed;
 
-    private List<GameObject> allMovables;
+    private static List<GameObject> allMovables;
 
     void Start()
     {
@@ -18,11 +18,11 @@ public class WorldMover : MonoBehaviour
     {
         foreach(GameObject movable in allMovables)
         {
-            movable.transform.Translate(-1 * moveSpeed * Time.deltaTime, 0, 0);
+            movable.transform.Translate(-1 * moveSpeed * Time.deltaTime, 0, 0, Space.World);
         }
     }
-
-    public void addMovable(GameObject movableObj)
+    
+    public static void addMovable(GameObject movableObj)
     {
         allMovables.Add(movableObj);
     }
