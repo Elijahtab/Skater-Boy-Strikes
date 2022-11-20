@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// By: 
 public class Enemy : MonoBehaviour
 {
     [SerializeField]

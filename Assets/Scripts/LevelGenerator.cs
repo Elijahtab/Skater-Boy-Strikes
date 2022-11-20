@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// By: Nicolas Assakura Miyazaki
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField]
