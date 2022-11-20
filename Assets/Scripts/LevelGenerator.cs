@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// By: Nicolas Assakura Miyazaki
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField]
-    private WorldMover wMov;
     [SerializeField]
     private GameObject[] levelConfigs;
     [SerializeField]
@@ -29,7 +28,7 @@ public class LevelGenerator : MonoBehaviour
             int nextConfig = Random.Range(0, numConfigs);
             GameObject newConfig = Instantiate(levelConfigs[nextConfig],
                                                 transform.position, transform.rotation);
-            wMov.addMovable(newConfig);
+            WorldMover.addMovable(newConfig);
         }
     }
 }
