@@ -7,14 +7,21 @@ public abstract class Powerup : MonoBehaviour
 {
     [SerializeField]
     private float duration;
+    [SerializeField]
+    private AudioSource audSrc;
+
+    private void Awake()
+    {
+        WorldMover.addMovable(gameObject);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerController collidingPlayer = collision.gameObject.GetComponent<PlayerController>();
         if (collidingPlayer)
         {
-            print("POWER");
             GetComponent<SpriteRenderer>().enabled = false;
+            audSrc.Play();
             Apply(collidingPlayer);
             StartCoroutine(RevertTimer(collidingPlayer));
         }
@@ -24,7 +31,7 @@ public abstract class Powerup : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         Revert(player);
-        print("no more power");
+        WorldMover.removeMoveable(gameObject);
         Destroy(gameObject);
     }
 

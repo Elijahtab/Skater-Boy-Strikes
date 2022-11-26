@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Text healthDisplay;
     [SerializeField] private Text jumpMeterDisplay;
     [SerializeField] private int health;
+    [SerializeField]
+    private PlayerAudioManager audioManager;
     private int score; //An internal field to store the score in.
     public GameObject GameOver;
     
@@ -102,6 +104,7 @@ public class PlayerController : MonoBehaviour
                                                 0);
             Instantiate(projectilePrefab, spawnLocation, transform.rotation).Fire(projectileVelocity);
             canFireProj = false;
+            audioManager.PlayClip(0);
         }
 
         // Logic for projectile cooldown (to prevent spam)
@@ -116,6 +119,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void AddScore(int toAdd)
+    {
+        score += toAdd;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
