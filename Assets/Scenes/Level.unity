@@ -791,6 +791,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d7d9e858791084dbc3cf9f85dd038b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 3196895248814889953, guid: 41bcc412e2368c448a12f8747c083b25, type: 3}
+  projectileVelocity: {x: 10, y: 0}
+  horizontalProjSpawnOffset: 1.5
+  projectileCooldown: 2
   rb: {fileID: 624690045}
   upForce: 300
   leftForce: 300
