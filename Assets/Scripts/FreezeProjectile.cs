@@ -40,7 +40,7 @@ public class FreezeProjectile : MonoBehaviour
         if (enemy)
         {
             enemy.freeze();
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 }
