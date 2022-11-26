@@ -7,6 +7,8 @@ public abstract class Powerup : MonoBehaviour
 {
     [SerializeField]
     private float duration;
+    [SerializeField]
+    private AudioSource audSrc;
 
     private void Awake()
     {
@@ -19,6 +21,7 @@ public abstract class Powerup : MonoBehaviour
         if (collidingPlayer)
         {
             GetComponent<SpriteRenderer>().enabled = false;
+            audSrc.Play();
             Apply(collidingPlayer);
             StartCoroutine(RevertTimer(collidingPlayer));
         }
