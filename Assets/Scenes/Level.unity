@@ -632,6 +632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerupOptions:
   - {fileID: -3265549057851958038, guid: 54ec8bedd59862043a409c6f83123092, type: 3}
+  - {fileID: 3258854487365792860, guid: 807613ee7df459444a576b4f999f6b4c, type: 3}
   spawnInterval: 5
   minSpawnHeight: -3
   maxSpawnHeight: 3
