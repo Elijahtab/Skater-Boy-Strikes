@@ -3,10 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// By: 
+// By: Noah McDougall & Nicolas Assakura Miyazaki
+
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    private FreezeProjectile projectilePrefab;
+    [SerializeField]
+    private Vector2 projectileVelocity;
+    [SerializeField]
+    [Tooltip("0 = spawn inside the player, 1 = spawn one unit in front of the player, etc.")]
+    private float horizontalProjSpawnOffset;
+
+    [Tooltip("In seconds")]
+    public float projectileCooldown;
+
+    private float projFireTimer;
+    private bool canFireProj;
+
     [SerializeField]
     private Rigidbody2D rb;  //The rigid body is a Unity class that is used for physics objects. We can apply forces to move a rigidbody
     [SerializeField]
@@ -36,7 +51,8 @@ public class PlayerController : MonoBehaviour
         scoreDisplay.text = $"{score}";
         healthDisplay.text = health.ToString();
         jumpMeterDisplay.text = jumpMeter.ToString();
-
+        projFireTimer = 0;
+        canFireProj = true;
     }
 
     // Update is called once per frame
@@ -77,7 +93,27 @@ public class PlayerController : MonoBehaviour
             Destroy(this.gameObject);
             GameStateManager.GameOver();
         }
-        
+
+        // Logic for shooting the projectile
+        if (Input.GetKeyDown(KeyCode.Space) && canFireProj)
+        {
+            Vector3 spawnLocation = new Vector3(transform.position.x + horizontalProjSpawnOffset,
+                                                transform.position.y,
+                                                0);
+            Instantiate(projectilePrefab, spawnLocation, transform.rotation).Fire(projectileVelocity);
+            canFireProj = false;
+        }
+
+        // Logic for projectile cooldown (to prevent spam)
+        if (!canFireProj)
+        {
+            projFireTimer += Time.deltaTime;
+            if (projFireTimer >= projectileCooldown)
+            {
+                projFireTimer = 0;
+                canFireProj = true;
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
