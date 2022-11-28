@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Shapes2D;
 
 // By: Noah McDougall & Nicolas Assakura Miyazaki
 
@@ -15,6 +16,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     [Tooltip("0 = spawn inside the player, 1 = spawn one unit in front of the player, etc.")]
     private float horizontalProjSpawnOffset;
+    [SerializeField]
+    private Shape shootIndicator;
+    [SerializeField]
+    private Color shootCooldownColor;
+    [SerializeField]
+    private Color shootRegularColor;
 
     [Tooltip("In seconds")]
     public float projectileCooldown;
@@ -104,15 +111,20 @@ public class PlayerController : MonoBehaviour
                                                 0);
             Instantiate(projectilePrefab, spawnLocation, transform.rotation).Fire(projectileVelocity);
             canFireProj = false;
+
             audioManager.PlayClip(0);
+            shootIndicator.settings.fillColor = shootCooldownColor;
+            shootIndicator.settings.endAngle = 1;
         }
 
         // Logic for projectile cooldown (to prevent spam)
         if (!canFireProj)
         {
             projFireTimer += Time.deltaTime;
+            shootIndicator.settings.endAngle = Mathf.Lerp(1, 360, projFireTimer / projectileCooldown);
             if (projFireTimer >= projectileCooldown)
             {
+                shootIndicator.settings.fillColor = shootRegularColor;
                 projFireTimer = 0;
                 canFireProj = true;
             }
