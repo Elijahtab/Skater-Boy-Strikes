@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private Color shootCooldownColor;
     [SerializeField]
     private Color shootRegularColor;
-
+    
     [Tooltip("In seconds")]
     public float projectileCooldown;
 
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     private Text scoreDisplay; //This is a Unity UI Text Object that you can display the score in by setting the text field of this object.
     [SerializeField] private Text healthDisplay;
     [SerializeField] private Text jumpMeterDisplay;
-    [SerializeField] private int health;
+    [SerializeField] public int health;
     [SerializeField]
     private PlayerAudioManager audioManager;
     private int score; //An internal field to store the score in.
@@ -129,6 +129,7 @@ public class PlayerController : MonoBehaviour
                 canFireProj = true;
             }
         }
+        
     }
 
     public void AddScore(int toAdd)
