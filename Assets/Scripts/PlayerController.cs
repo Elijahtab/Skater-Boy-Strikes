@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     public GameObject GameOver;
     
     
-    [SerializeField] private int jumpMeter;
+    [SerializeField] public int jumpMeter;
     [SerializeField] private int jumpRefreshTime;
     //Does the jump timer:
     private float jumpTimer = 0.0f;

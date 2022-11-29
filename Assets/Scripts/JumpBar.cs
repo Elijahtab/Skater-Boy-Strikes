@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class JumpBar : MonoBehaviour
 {
     PlayerController playerController;
     public Slider slider;
-    int healthBarVal = 0;
+    int jumpBarVal = 0;
     void Awake()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        healthBarVal = playerController.health;
+        jumpBarVal = playerController.jumpMeter;
     }
     void Update()
     {
-        healthBarVal = playerController.health;
-        slider.value = healthBarVal;
+        jumpBarVal = playerController.jumpMeter;
+        slider.value = jumpBarVal;
     }
     
     
