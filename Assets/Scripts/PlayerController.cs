@@ -30,13 +30,13 @@ public class PlayerController : MonoBehaviour
     private bool canFireProj;
 
     [SerializeField]
-    private Rigidbody2D rb;  //The rigid body is a Unity class that is used for physics objects. We can apply forces to move a rigidbody
+    private Rigidbody2D player;  //The rigid body is a Unity class that is used for physics objects. We can apply forces to move a rigidbody
+    private Vector3 m_ToApplyMove;
     [SerializeField]
-    private float upForce; //This is the force that we will want to apply to the rigidbody
+    private float m_jumpForce; //This is the force that we will want to apply to the rigidbody
     [SerializeField]
-    private float leftForce; //This is the force that we will want to apply to the rigidbody
-    [SerializeField]
-    private float rightForce; //This is the force that we will want to apply to the rigidbody
+    private float m_SpeedForce; //This is the force that we will want to apply to the rigidbody
+    
     [SerializeField]
     private Text scoreDisplay; //This is a Unity UI Text Object that you can display the score in by setting the text field of this object.
     [SerializeField] private Text healthDisplay;
@@ -47,8 +47,9 @@ public class PlayerController : MonoBehaviour
     public int score; //An internal field to store the score in.
     public GameObject GameOver;
     private float scoreTimer = 0.0f;
-    
-    
+    private Animator m_Anim;
+    private SpriteRenderer m_Renderer;
+
     [SerializeField] public int jumpMeter;
     [SerializeField] private int jumpRefreshTime;
     //Does the jump timer:
@@ -63,10 +64,17 @@ public class PlayerController : MonoBehaviour
         jumpMeterDisplay.text = jumpMeter.ToString();
         projFireTimer = 0;
         canFireProj = true;
+        m_Anim = GetComponent<Animator>();
+        if (m_Anim != null)
+        {
+            m_Anim.SetBool("Ground", true);
+            m_Anim.SetFloat("Speed", 0);
+        }
+        m_Renderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         scoreTimer += Time.deltaTime;
         if(scoreTimer > 5)
@@ -91,18 +99,26 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             {
-            GetComponent<Rigidbody2D>().AddForce(Vector2.up * upForce);
-            jumpMeter -= 1;
+                m_ToApplyMove += new Vector3(0, m_jumpForce, 0);
+                jumpMeter -= 1;
             }
         }
         
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
-            GetComponent<Rigidbody2D>().AddForce(Vector2.left * leftForce);
+            m_ToApplyMove += new Vector3(-m_SpeedForce, 0, 0);
+            if (m_Renderer != null)
+            {
+                m_Renderer.flipX = true;
+            }
         }
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
-            GetComponent<Rigidbody2D>().AddForce(Vector2.right * rightForce);
+            m_ToApplyMove += new Vector3(m_SpeedForce, 0, 0);
+            if (m_Renderer != null)
+            {
+                m_Renderer.flipX = false;
+            }
         }
         
         if(health < 1)
@@ -140,7 +156,15 @@ public class PlayerController : MonoBehaviour
         
         
     }
-
+    private void FixedUpdate()
+    {
+        player.AddForce(m_ToApplyMove);
+        if (m_Anim != null)
+        {
+            m_Anim.SetFloat("Speed", player.velocity.x);
+        }
+        m_ToApplyMove = Vector3.zero;
+    }
     public void AddScore(int toAdd)
     {
         score += toAdd;
