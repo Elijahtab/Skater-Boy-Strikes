@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     private PlayerAudioManager audioManager;
     private int score; //An internal field to store the score in.
     public GameObject GameOver;
+    private float scoreTimer = 0.0f;
     
     
     [SerializeField] public int jumpMeter;
@@ -67,6 +68,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        scoreTimer += Time.deltaTime;
+        if(scoreTimer > 5)
+        {
+        scoreTimer -= scoreTimer;
+        score += 100;
+        scoreDisplay.text = $"{score}";
+        }
         jumpMeterDisplay.text = jumpMeter.ToString();
         if(jumpMeter < 5 )
         {
@@ -130,6 +138,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         
+        
     }
 
     public void AddScore(int toAdd)
@@ -170,11 +179,7 @@ public class PlayerController : MonoBehaviour
 
         //If the player falls out of the world we want to end the game.
 
-        if (!collision.gameObject.CompareTag("GameOver"))
-        {
-            score += 100;
-            scoreDisplay.text = $"{score}";
-        }
+        
 
         if (collision.gameObject.tag == "Enemy")
         {
