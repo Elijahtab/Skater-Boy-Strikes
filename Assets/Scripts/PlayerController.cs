@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public int health;
     [SerializeField]
     private PlayerAudioManager audioManager;
-    private int score; //An internal field to store the score in.
+    public int score; //An internal field to store the score in.
     public GameObject GameOver;
     private float scoreTimer = 0.0f;
     
