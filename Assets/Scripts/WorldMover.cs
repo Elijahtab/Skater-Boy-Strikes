@@ -32,6 +32,11 @@ public class WorldMover : MonoBehaviour
         allMovables.Add(movableObj);
     }
 
+    public static void removeMoveable(GameObject moveableObj)
+    {
+        allMovables.Remove(moveableObj);
+    }
+
     /* This checks for platforms that have traveled "levelDestroyBound" units to the left and
      * destroys them. This is a coroutine because it is a bit costly as it checks all moveable 
      * platforms' positions. As a coroutine, this can be run only once every tenth of a second
