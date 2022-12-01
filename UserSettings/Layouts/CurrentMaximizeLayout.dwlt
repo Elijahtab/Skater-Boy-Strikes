@@ -86,7 +86,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1664, y: 1159}
   m_ClearInEditMode: 1
-  m_NoCameraWarning: 1
+  m_NoCameraWarning: 0
   m_LowResolutionForAspectRatios: 00000000000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
@@ -226,7 +226,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: eed8feff2258ffff2afbffff926000009c600000c0600000e2600000d69c0000ea9c00000e9d0000a4ef0000ceef0000
+      m_ExpandedIDs: f69bfeff669ffeff9e9ffeffbc9ffeff00a0feff08a0feff48a0feffeca0feff26a1feff40a1feff80a1feff84a1feff36a2feff70a2feffd8a3feff18a4feff1ea4feffd2a7feffb2aafeffeed8feff2258ffff2afbffff926000009c600000c0600000e2600000d69c0000ea9c00000e9d00003cef000054ef000088ef00009cef0000a4ef0000ceef000068110100f616010082170100c42a0100722e0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -525,9 +525,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 488.19098, y: 884.1028, z: -50.865417}
+    m_Target: {x: 160.06812, y: 1016.771, z: -42.04865}
     speed: 2
-    m_Value: {x: 488.29095, y: 884.0364, z: -50.86667}
+    m_Value: {x: 160.06812, y: 1016.771, z: -42.04865}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -578,9 +578,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 333.66946
+    m_Target: 271.15424
     speed: 2
-    m_Value: 333.79465
+    m_Value: 271.15424
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -754,21 +754,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sprites
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 57
   m_LastFolders:
-  - Assets/Sprites
+  - Assets/Scenes
   m_LastFoldersGridSize: 57
   m_LastProjectPath: C:\Users\catlo\OneDrive\Desktop\Final Game\GDIM-31-Game-Project-Inf-Runner-
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 72.49791}
-    m_SelectedIDs: 80630000
-    m_LastClickedID: 25472
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 78630000
+    m_LastClickedID: 25464
     m_ExpandedIDs: 000000006663000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -979,4 +979,4 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 61484
+  m_LastSelectedObjectID: 77390
