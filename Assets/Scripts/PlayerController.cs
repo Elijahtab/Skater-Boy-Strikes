@@ -162,6 +162,7 @@ public class PlayerController : MonoBehaviour
     public void AddScore(int toAdd)
     {
         score += toAdd;
+        scoreDisplay.text = $"{score}";
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
