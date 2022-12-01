@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     //Does the jump timer:
     private float jumpTimer = 0.0f;
     // Start is called before the first frame update
+    
     void Start()
     {
         //Here is where you should initalize fields.
@@ -65,11 +66,6 @@ public class PlayerController : MonoBehaviour
         projFireTimer = 0;
         canFireProj = true;
         m_Anim = GetComponent<Animator>();
-        if (m_Anim != null)
-        {
-            m_Anim.SetBool("Ground", true);
-            m_Anim.SetFloat("Speed", 0);
-        }
         m_Renderer = GetComponent<SpriteRenderer>();
     }
 
@@ -159,12 +155,10 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         player.AddForce(m_ToApplyMove);
-        if (m_Anim != null)
-        {
-            m_Anim.SetFloat("Speed", player.velocity.x);
-        }
         m_ToApplyMove = Vector3.zero;
+
     }
+
     public void AddScore(int toAdd)
     {
         score += toAdd;
